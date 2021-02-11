@@ -2,14 +2,12 @@
 using NetCoreDemo02.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NetCoreDemo02.Services
 {
     public class HardCodedSampleDataRepo : IProductDataService
     {
-        static List<ProductModel> productList = new List<ProductModel>();
+        private static List<ProductModel> productList = new List<ProductModel>();
 
         public int Delete(ProductModel product)
         {
@@ -18,7 +16,7 @@ namespace NetCoreDemo02.Services
 
         public List<ProductModel> GetAllProducts()
         {
-            if(productList.Count == 0)
+            if (productList.Count == 0)
             {
                 productList.Add(new ProductModel { Id = 1, Name = "Mouse Pad", Price = 5.99m, Description = "A square piece of plastic to make mousing easier." });
                 productList.Add(new ProductModel { Id = 2, Name = "Web Pad", Price = 6.99m, Description = "A square piece of plastic to make mousing easier." });
@@ -35,7 +33,7 @@ namespace NetCoreDemo02.Services
                         .RuleFor(p => p.Description, f => f.Rant.Review())
                         );
                 }
-            } 
+            }
             return productList;
         }
 
